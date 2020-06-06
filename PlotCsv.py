@@ -7,10 +7,10 @@ import os
 from bs4 import BeautifulSoup
 
 allCSV = glob.glob("*.csv")
-allHTML = glob.glob("*.html")
+htmlNames = glob.glob("*.html")
 
-for htmlFile in allHTML:
-	os.remove(htmlFile)
+for name in htmlNames:
+	os.remove(name)
 
 x = []
 y = []
@@ -57,10 +57,13 @@ for csvFile in allCSV:
 	x = []
 	y = []
 	
-allHTML = glob.glob("*.html")
+htmlNames = glob.glob("*.html")
 
-for htmlFiles in range(1, len(allHTML)):
-	print(htmlFile)
-	
+allGraphsHTML = BeautifulSoup(htmlNames[0])
+
+for i in range(1, len(allHTML)):
+	currentHTML = BeautifulSoup(htmlNames[i])
+	for element in currentHTML.body:
+		allGraphsHTML.body.append(element)
 	
 
