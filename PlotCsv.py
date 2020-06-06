@@ -22,7 +22,6 @@ yLabel = "y"
 
 for csvFile in allCSV:
 	fileName = csvFile[:-4]
-	print(csvFile)
 	with open(csvFile) as csvObj:
 		reader = csv.reader(csvObj, delimiter=',')
 		header = next(reader)
@@ -58,12 +57,13 @@ for csvFile in allCSV:
 	y = []
 	
 htmlNames = glob.glob("*.html")
+htmlFile = open(htmlNames[0], 'a')
+allGraphsHTML = BeautifulSoup(htmlFile)
 
-allGraphsHTML = BeautifulSoup(htmlNames[0])
-
-for i in range(1, len(allHTML)):
-	currentHTML = BeautifulSoup(htmlNames[i])
-	for element in currentHTML.body:
+for i in range(1, len(htmlNames)):
+	currentHtmlName = BeautifulSoup(htmlNames[i])
+	currentHtmlFile = open(currentHtmlName, 'r')
+	for element in currentHtmlFile.body:
 		allGraphsHTML.body.append(element)
 	
 
