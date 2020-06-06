@@ -3,8 +3,14 @@ import numpy as np
 import pandas as pd
 import glob 
 import csv
+import os
+from bs4 import BeautifulSoup
 
 allCSV = glob.glob("*.csv")
+allHTML = glob.glob("*.html")
+
+for htmlFile in allHTML:
+	os.remove(htmlFile)
 
 x = []
 y = []
@@ -50,4 +56,11 @@ for csvFile in allCSV:
 	
 	x = []
 	y = []
+	
+allHTML = glob.glob("*.html")
+
+for htmlFiles in range(1, len(allHTML)):
+	print(htmlFile)
+	
+	
 
