@@ -14,6 +14,8 @@ for name in htmlNames:
 
 x = []
 y = []
+charts = []
+
 xIndex = 0
 yIndex = 2
 
@@ -27,9 +29,9 @@ for csvFile in allCSV:
 		header = next(reader)
 		
 		try:
-			print("No header for x.")
-		except ValueError:
 			xLabel = (float)(header[xIndex])
+		except ValueError:
+			print("No header for x.")
 		
 		try:
 			yLabel = (float)(header[yIndex])
@@ -48,15 +50,19 @@ for csvFile in allCSV:
 	  yLabel: y
 	})
 
-	alt.Chart(source).mark_line().encode(
+	tempChart = alt.Chart(source).mark_line().encode(
 		x=xLabel,
 		y=yLabel
-	).save(fileName + ".html")
+	)
+	charts.append(tempChart)
+	tempChart.save(fileName + ".html")
 	
 	x = []
 	y = []
 	
-htmlNames = glob.glob("*.html")
-htmlFile = open(htmlNames[0], 'a')
-allGraphsHTML = BeautifulSoup(htmlFile)
+allCharts = chart[0]	
+for i in range(1, len(allCharts):
+	allCharts = allCharts | charts[i]
+	
+allCharts.save("allCharts.html")
 
