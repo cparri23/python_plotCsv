@@ -29,12 +29,12 @@ for csvFile in allCSV:
 		try:
 			print("No header for x.")
 		except ValueError:
-			xLabel = header[xIndex]
+			xLabel = (float)(header[xIndex])
 		
 		try:
-			print("No header for y.")
+			yLabel = (float)(header[yIndex])
 		except ValueError:
-			yLabel = header[yIndex]		
+			print("No header for y.")		
 		
 		for row in reader:
 			try:
