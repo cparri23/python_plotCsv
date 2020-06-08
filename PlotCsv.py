@@ -53,16 +53,16 @@ for csvFile in allCSV:
 	tempChart = alt.Chart(source).mark_line().encode(
 		x=xLabel,
 		y=yLabel
-	)
+	).properties(title=fileName + ".html")
 	charts.append(tempChart)
 	tempChart.save(fileName + ".html")
 	
 	x = []
 	y = []
 	
-allCharts = chart[0]	
-for i in range(1, len(allCharts):
-	allCharts = allCharts | charts[i]
+allCharts = charts[0]	
+for i in range(1, len(charts)):
+	allCharts = allCharts & charts[i]
 	
 allCharts.save("allCharts.html")
 
