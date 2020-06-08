@@ -60,10 +60,3 @@ htmlNames = glob.glob("*.html")
 htmlFile = open(htmlNames[0], 'a')
 allGraphsHTML = BeautifulSoup(htmlFile)
 
-for i in range(1, len(htmlNames)):
-	currentHtmlName = BeautifulSoup(htmlNames[i])
-	currentHtmlFile = open(currentHtmlName, 'r')
-	for element in currentHtmlFile.body:
-		allGraphsHTML.body.append(element)
-	
-
